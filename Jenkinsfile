@@ -5,7 +5,7 @@ pipeline {
      stage ('Checkout') {
        steps {
          git 'https://github.com/rfeggins/spring-petclinic.git'
-         mycommitmsg = 'ddtl-3958 - Test integration workflow'
+         echo 'ddtl-3958 - Test integration workflow'
         // echo 'My Commit message'
         // sh echo mycommitmsg 
          

@@ -12,7 +12,7 @@ pipeline {
          sh 'mvn clean package'
        }
      }
-     stage ('JUNIT Test') {
+     stage ('Test') {
        steps {
          junit '**/target/surefire-reports/TEST-*.xml'
        }
@@ -20,6 +20,13 @@ pipeline {
      stage ('Archive artifacts') {
        steps {
           archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
+       }
+     }
+     stage ('Deploy') {
+       steps {
+         echo "deploy"
+       }
+     }
        }
      }
   }

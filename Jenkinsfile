@@ -9,7 +9,7 @@ pipeline {
      stage ('Checkout') {
        steps {
          git 'https://github.com/rfeggins/spring-petclinic.git'
-         myCommitId = sh(returnStdout: true, script: 'git rev-parse HEAD')
+        // myCommitId = sh(returnStdout: true, script: 'git rev-parse HEAD')
        }
      }
      stage ('Build') {

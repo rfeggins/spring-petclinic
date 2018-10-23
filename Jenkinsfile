@@ -9,7 +9,8 @@ pipeline {
      stage ('Checkout') {
        node {
           withCheckout(scm) {
-       echo "GIT_COMMIT is ${env.GIT_COMMIT}"
+            echo "GIT_COMMIT is ${env.GIT_COMMIT}"
+          }
        }
        steps {
          git 'https://github.com/rfeggins/spring-petclinic.git'

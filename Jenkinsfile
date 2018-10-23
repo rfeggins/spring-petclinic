@@ -1,15 +1,13 @@
 pipeline {
   agent any
 
-  parameters {
-    string(name: 'myCommitMessage', defaultValue: 'Commit message: ddtl-3958 - Test integration workflow', description: '')
-  }
-
   stages {
      stage ('Checkout') {
        steps {
          git 'https://github.com/rfeggins/spring-petclinic.git'
-         echo ${myCommitMessage}
+         mycommitmsg = 'ddtl-3958 - Test integration workflow'
+         echo "My Commit message" 
+         echo mycommitmsg
          
          //shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
          

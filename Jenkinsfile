@@ -7,14 +7,18 @@ pipeline {
 
   stages {
      stage ('Checkout') {
+       node {
+          withCheckout(scm) {
+       echo "GIT_COMMIT is ${env.GIT_COMMIT}"
+       }
        steps {
          git 'https://github.com/rfeggins/spring-petclinic.git'
          // myCommitId = sh(returnStdout: true, script: 'git rev-parse HEAD')
          // sh "git rev-parse --short HEAD > .git/commit-id"
          // commit_id = readFile('.git/commit-id')
-         @echo off
-         echo GIT_COMMIT %GIT_COMMIT%
-         echo GIT_BRANCH %GIT_BRANCH%
+        // @echo off
+        // echo GIT_COMMIT %GIT_COMMIT%
+         //echo GIT_BRANCH %GIT_BRANCH%
        }
      }
      stage ('Build') {

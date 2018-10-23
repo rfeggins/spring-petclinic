@@ -2,7 +2,8 @@ pipeline {
   agent any
 
   parameters {
-        string(name: 'myCommitId', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+    string(name: 'myCommitId', defaultValue: 'Mr Jenkins', description: '')
+  }
 
   stages {
      stage ('Checkout') {

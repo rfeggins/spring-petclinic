@@ -6,8 +6,8 @@ pipeline {
        steps {
          git 'https://github.com/rfeggins/spring-petclinic.git'
          mycommitmsg = 'ddtl-3958 - Test integration workflow'
-         sh echo "My Commit message" 
-         sh echo mycommitmsg 
+         echo "My Commit message" + mycommitmsg
+        // sh echo mycommitmsg 
          
          //shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
          

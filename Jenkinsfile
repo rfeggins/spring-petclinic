@@ -9,7 +9,9 @@ pipeline {
      stage ('Checkout') {
        steps {
          git 'https://github.com/rfeggins/spring-petclinic.git'
-        // myCommitId = sh(returnStdout: true, script: 'git rev-parse HEAD')
+         // myCommitId = sh(returnStdout: true, script: 'git rev-parse HEAD')
+         sh "git rev-parse --short HEAD > .git/commit-id"
+         commit_id = readFile('.git/commit-id')
        }
      }
      stage ('Build') {

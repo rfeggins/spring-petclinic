@@ -2,15 +2,16 @@ pipeline {
   agent any
 
   parameters {
-    string(name: 'myCommitId', defaultValue: 'Mr Jenkins', description: '')
+    string(name: 'myCommitMessage', defaultValue: 'Commit message: ddtl-3958 - Test integration workflow', description: '')
   }
 
   stages {
      stage ('Checkout') {
        steps {
          git 'https://github.com/rfeggins/spring-petclinic.git'
+         echo ${myCommitMessage}
          
-         shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
+         //shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
          
          // myCommitId = sh(returnStdout: true, script: 'git rev-parse HEAD')
          // sh "git rev-parse --short HEAD > .git/commit-id"

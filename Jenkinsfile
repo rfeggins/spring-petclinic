@@ -30,7 +30,7 @@ pipeline {
       steps {
         // Get Jira Server info
         script {
-          ddtlID = 'DDTL-3859'
+          ddtlID = 'DDTL-4386'
           jiraSite = 'HERTZ'
 
            def serverInfo = jiraGetServerInfo site: jiraSite, failOnError: true

@@ -1,16 +1,27 @@
 pipeline {
   agent any
+  parameters {
+    string(name: 'MyCommitCOMMENT',
+           defaultValue: 'ddtl-3958 - Test integration workflow')
+
+  }
 
   stages {
      stage ('Checkout') {
        steps {
          git 'https://github.com/rfeggins/spring-petclinic.git'
          echo 'ddtl-3958 - Test integration workflow'
+
+         if (${params.MyCommitCOMMENT})
+
+         }
+
+
         // echo 'My Commit message'
-        // sh echo mycommitmsg 
-         
+        // sh echo mycommitmsg
+
          //shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
-         
+
          // myCommitId = sh(returnStdout: true, script: 'git rev-parse HEAD')
          // sh "git rev-parse --short HEAD > .git/commit-id"
          // commit_id = readFile('.git/commit-id')
@@ -33,6 +44,9 @@ pipeline {
        steps {
           archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
        }
+     }
+     stage('JIRA') {
+        jiraAddWatcher idOrKey: 'DDTL-4386', userName: 'Jenkins'
      }
      stage ('Deploy') {
        steps {

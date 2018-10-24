@@ -12,10 +12,6 @@ pipeline {
          git 'https://github.com/rfeggins/spring-petclinic.git'
          echo 'ddtl-3958 - Test integration workflow'
 
-         if (${params.MyCommitCOMMENT})
-
-         }
-
 
         // echo 'My Commit message'
         // sh echo mycommitmsg

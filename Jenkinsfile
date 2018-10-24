@@ -30,11 +30,16 @@ pipeline {
       steps {
         // Get Jira Server info
         script {
+          ddtlID = 'DDTL-3859'
+          jiraSite = 'HERTZ'
 
-           def serverInfo = jiraGetServerInfo site: 'HERTZ', failOnError: true
+           def serverInfo = jiraGetServerInfo site: jiraSite, failOnError: true
         //def serverInfo = jiraGetServerInfo()
            echo "Jenkins Job Server Info"
            echo serverInfo.data.toString()
+
+           def issueLink = jiraGetRemoteIssueLinks idOrKey: ddtlID, globalId: '10000', site: jiraSite, failOnError: false
+           echo issueLink.data.toString()
          }
       }
     }

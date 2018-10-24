@@ -47,7 +47,7 @@ pipeline {
           def jiraUser = 'Jenkins'
           def newURL = "http://www.mycompany.com/support?id=1"
 
-          try {
+          //try {
           // add remote link
             def remoteLink =  [globalId: "system=http://www.mycompany.com/support&id=1",
                        application: [type: "com.acme.tracker",
@@ -58,10 +58,10 @@ pipeline {
 
            def issueLink = jiraNewRemoteIssueLink idOrKey: 'TEST-27', remoteLink: remoteLink
            echo issueLink.data.toString()
-          } catch(Exception e) {
+        //  } catch(Exception e) {
             // Add watcher
             jiraAddWatcher idOrKey: jiraID, userName: jiraUser
-          }
+        //  }
         }
      }
      stage ('Deploy') {

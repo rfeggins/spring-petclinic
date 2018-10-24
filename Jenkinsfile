@@ -26,6 +26,18 @@ pipeline {
          //echo GIT_BRANCH %GIT_BRANCH%
       }
     }
+    stage ('Jira') {
+      steps {
+        // Get Jira Server info
+        script {
+
+           def serverInfo = jiraGetServerInfo site: 'HERTZ', failOnError: true
+        //def serverInfo = jiraGetServerInfo()
+           echo "Jenkins Job Server Info"
+           echo serverInfo.data.toString()
+         }
+      }
+    }
      stage ('Build') {
        steps {
          sh 'mvn clean package'
@@ -41,17 +53,7 @@ pipeline {
           archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
        }
      }
-     stage ('Jira') {
-       steps {
-         // Get Jira Server info
-         script {
 
-            def serverInfo = jiraGetServerInfo site: 'HERTZ', failOnError: true
-         //def serverInfo = jiraGetServerInfo()
-            echo serverInfo.data.toString()
-          }
-       }
-     }
      stage ('Deploy') {
        steps {
          echo "deploy"

@@ -45,7 +45,7 @@ pipeline {
         steps {
           def jiraID = 'DDTL-4386'
           def jiraUser = 'Jenkins'
-          def newURL = "http://www.mycompany.com/support?id=1"
+          def newURL = 'http://www.mycompany.com/support?id=1'
 
           //try {
           // add remote link

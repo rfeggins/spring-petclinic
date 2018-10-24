@@ -41,6 +41,13 @@ pipeline {
           archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
        }
      }
+     stage ('Jira') {
+       steps {
+         // Get Jira Server info
+         def serverInfo = jiraGetServerInfo()
+         echo serverInfo.data.toString()
+       }
+     }
      stage ('Deploy') {
        steps {
          echo "deploy"

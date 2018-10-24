@@ -46,21 +46,23 @@ pipeline {
           def jiraID = 'DDTL-4386'
           def jiraUser = 'Jenkins'
           def newURL = 'http://www.mycompany.com/support?id=1'
-
+          script {
+            jiraAddWatcher idOrKey: jiraID, userName: jiraUser
+          }
           //try {
           // add remote link
-            def remoteLink =  [globalId: "system=http://www.mycompany.com/support&id=1",
-                       application: [type: "com.acme.tracker",
-                                     name: "My Acme Tracker"],
-                       relationship: "causes",
-                       object: [url: newURL,
-                                title: "MYTEST-111"]]
+          //  def remoteLink =  [globalId: "system=http://www.mycompany.com/support&id=1",
+                  //     application: [type: "com.acme.tracker",
+                  //                   name: "My Acme Tracker"],
+                  //     relationship: "causes",
+                  //     object: [url: newURL,
+                  //              title: "MYTEST-111"]]
 
-           def issueLink = jiraNewRemoteIssueLink idOrKey: 'TEST-27', remoteLink: remoteLink
-           echo issueLink.data.toString()
+      //     def issueLink = jiraNewRemoteIssueLink idOrKey: 'TEST-27', remoteLink: remoteLink
+      //     echo issueLink.data.toString()
         //  } catch(Exception e) {
             // Add watcher
-            jiraAddWatcher idOrKey: jiraID, userName: jiraUser
+
         //  }
         }
      }

@@ -43,7 +43,26 @@ pipeline {
      }
      stage('JIRA') {
         steps {
-          jiraAddWatcher idOrKey: 'DDTL-4386', userName: 'Jenkins'
+          def jiraID = 'DDTL-4386'
+          def jiraUser = 'Jenkins'
+          def newURL = "http://www.mycompany.com/support?id=1"
+
+          try {
+          // Add watcher
+          jiraAddWatcher idOrKey: jiraID, userName: jiraUser
+          // add remote link
+            def remoteLink =  [globalId: "system=http://www.mycompany.com/support&id=1",
+                       application: [type: "com.acme.tracker",
+                                     name: "My Acme Tracker"],
+                       relationship: "causes",
+                       object: [url: newURL,
+                                title: "MYTEST-111"]]
+
+           def issueLink = jiraNewRemoteIssueLink idOrKey: 'TEST-27', remoteLink: remoteLink
+           echo issueLink.data.toString()
+          } catch(Exception e) {
+
+          }
         }
      }
      stage ('Deploy') {

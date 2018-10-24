@@ -46,7 +46,9 @@ pipeline {
        }
      }
      stage('JIRA') {
-        jiraAddWatcher idOrKey: 'DDTL-4386', userName: 'Jenkins'
+        steps {
+          jiraAddWatcher idOrKey: 'DDTL-4386', userName: 'Jenkins'
+        }
      }
      stage ('Deploy') {
        steps {

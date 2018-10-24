@@ -44,7 +44,8 @@ pipeline {
      stage ('Jira') {
        steps {
          // Get Jira Server info
-         def serverInfo = jiraGetServerInfo()
+         def serverInfo = jiraGetServerInfo site: 'HERTZ', failOnError: true
+         //def serverInfo = jiraGetServerInfo()
          echo serverInfo.data.toString()
        }
      }

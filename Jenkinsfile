@@ -39,9 +39,8 @@ pipeline {
            echo serverInfo.data.toString()
 
            // Get issue fields
-           def fields = jiraGetFields idOrKey: ddtlID, site: jiraSite
-           echo 'Retrieve Issue Fields'
-           echo fields.data.toString()
+           def watches = jiraGetIssueWatches idOrKey: ddtlID, site: jiraSite
+           echo watches.data.toString()
 
            def issueLink = jiraGetRemoteIssueLinks idOrKey: ddtlID, globalId: '10000', site: jiraSite, failOnError: false
            echo issueLink.data.toString()

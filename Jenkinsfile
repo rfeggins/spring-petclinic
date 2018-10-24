@@ -38,6 +38,11 @@ pipeline {
            echo "Jenkins Job Server Info"
            echo serverInfo.data.toString()
 
+           // Get issue fields
+           def fields = jiraGetFields idOrKey: ddtlID, site: jiraSite
+           echo 'Retrieve Issue Fields'
+           echo fields.data.toString()
+
            def issueLink = jiraGetRemoteIssueLinks idOrKey: ddtlID, globalId: '10000', site: jiraSite, failOnError: false
            echo issueLink.data.toString()
          }

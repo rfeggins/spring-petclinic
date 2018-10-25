@@ -44,6 +44,9 @@ pipeline {
 
            def issueLink = jiraGetRemoteIssueLinks idOrKey: ddtlID, globalId: '10000', site: jiraSite, failOnError: false
            echo issueLink.data.toString()
+
+           def issue = jiraGetIssue  idOrKey: ddtlID, site: jiraSite
+           echo issue.data.toString()
          }
       }
     }

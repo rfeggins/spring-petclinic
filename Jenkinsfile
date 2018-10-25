@@ -42,8 +42,13 @@ pipeline {
            def watches = jiraGetIssueWatches idOrKey: ddtlID, site: jiraSite
            echo watches.data.toString()
 
-           def comments = jiraGetComments site: ddtlID, idOrKey: jiraSite
-           echo comments.data.toString()
+           try {
+             def comments = jiraGetComments site: ddtlID, idOrKey: jiraSite
+             echo comments.data.toString()
+           } finally {
+             echo 'No comments found'
+           }
+
 
            def issue = jiraGetIssue  idOrKey: ddtlID, site: jiraSite
            echo issue.data.toString()

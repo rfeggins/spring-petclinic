@@ -42,6 +42,9 @@ pipeline {
            def watches = jiraGetIssueWatches idOrKey: ddtlID, site: jiraSite
            echo watches.data.toString()
 
+           def comments = jiraGetComments site: ddtlID, idOrKey: jiraSite
+           echo comments.data.toString()
+
            def issue = jiraGetIssue  idOrKey: ddtlID, site: jiraSite
            echo issue.data.toString()
          }

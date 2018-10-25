@@ -43,9 +43,8 @@ pipeline {
            echo watches.data.toString()
 
            try {
-             def comments = jiraGetComments site: jiraSite idOrKey: ddtlID
-
-             echo comments.data.toString()
+            // def comments = jiraGetComments site: jiraSite idOrKey: ddtlID
+            // echo comments.data.toString()
 
              def issueLink = jiraGetRemoteIssueLinks idOrKey: ddtlID, globalId: '10000', site: jiraSite, failOnError: false
              echo issueLink.data.toString()

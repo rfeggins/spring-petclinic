@@ -49,7 +49,8 @@ pipeline {
     }
      stage ('Build') {
        steps {
-         sh 'mvn clean package'
+         // sh 'mvn clean package'
+         echo 'stubbed out mvn clean package'
        }
      }
      stage ('Test') {
